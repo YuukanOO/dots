@@ -181,13 +181,13 @@ ps1() {
 
     # Check if user is root
     if [ "$(id -u)" != "0" ]; then
-        PS1="$BG_YELLOW$FG_WHITE_BOLD \u $RESET"
+        PS1="\[$BG_YELLOW\]\[$FG_WHITE_BOLD\] \u \[$RESET\]"
     else
-        PS1="$BG_RED$FG_WHITE_BOLD \u $RESET"
+        PS1="\[$BG_RED\]\[$FG_WHITE_BOLD\] \u \[$RESET\]"
     fi
-    PS1+="$BG_GRAY$FG_BLACK \w $RESET"
-    PS1+="$BG_BLUE$(__git_branch)$RESET"
-    PS1+="$BG_EXIT \$ $RESET "
+    PS1+="\[$BG_GRAY\]\[$FG_BLACK\] \w \[$RESET\]"
+    PS1+="\[$BG_BLUE\]$(__git_branch)\[$RESET\]"
+    PS1+="\[$BG_EXIT\] \$ \[$RESET\] "
 }
 
 PROMPT_COMMAND=ps1
