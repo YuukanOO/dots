@@ -1,0 +1,3 @@
+[submodule ".irssi"]
+	path = .irssi
+	url = git@github.com:ronilaukkarinen/weed.git

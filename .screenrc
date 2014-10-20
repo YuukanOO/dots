@@ -1,0 +1,4 @@
+# see http://aperiodic.net/screen/man:string_escapes
+caption always '%{= GK}%n %f %{= Gw}%t %?%F%{= GR}*'
+hardstatus alwayslastline '%{= GK}%=%u@%{= Gg}%H%{-} %D %d %M %Y - %{= Gw}%c%{-}:%s' 
+rendition so "="
