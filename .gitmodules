@@ -1,3 +1,18 @@
 [submodule ".irssi"]
 	path = .irssi
 	url = git@github.com:ronilaukkarinen/weed.git
+[submodule ".vim/bundle/LustyExplorer"]
+	path = .vim/bundle/LustyExplorer
+	url = git@github.com:vim-scripts/LustyExplorer.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = git@github.com:Shougo/neocomplcache.vim.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule ".vim/bundle/vim2hs"]
+	path = .vim/bundle/vim2hs
+	url = git@github.com:dag/vim2hs.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = git@github.com:bling/vim-airline.git
