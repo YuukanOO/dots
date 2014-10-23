@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = git@github.com:groenewege/vim-less.git
+[submodule ".vim/bundle/mustache"]
+	path = .vim/bundle/mustache
+	url = git@github.com:Slava/vim-spacebars.git
