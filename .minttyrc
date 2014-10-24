@@ -24,3 +24,5 @@ BoldCyan=171,121,103
 White=192,197,206
 BoldWhite=239,241,245
 CursorType=block
+Scrollbar=none
+PgUpDnScroll=yes
