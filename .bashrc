@@ -64,5 +64,15 @@ man() {
     man "$@"
 }
 
+ps1() {
+  if [ $? -eq 0 ]; then
+    local STATUS="$(tput setaf 2)"
+  else
+    local STATUS="$(tput setaf 1)"
+  fi
+
+  PS1="\[$(tput setaf 4)\]┌─[\[$(tput sgr0)\]\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput sgr0)\]\[$(tput setaf 2)\]\H\[$(tput setaf 4)\]]\[$STATUS\]: \[$(tput sgr0)\]\[$(tput setaf 7)\]\w\n\[$(tput setaf 4)\]└── \[$(tput sgr0)\]\[$(tput sgr0)\]"
+}
+
 # Prompt!
-export PS1="\[$(tput setaf 4)\]┌─[\[$(tput sgr0)\]\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput sgr0)\]\[$(tput setaf 2)\]\H\[$(tput setaf 4)\]]: \[$(tput sgr0)\]\[$(tput setaf 7)\]\w\n\[$(tput setaf 4)\]└── \[$(tput sgr0)\]\[$(tput sgr0)\]"
+PROMPT_COMMAND=ps1
