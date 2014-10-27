@@ -26,3 +26,5 @@ BoldWhite=239,241,245
 CursorType=block
 Scrollbar=none
 PgUpDnScroll=yes
+Locale=C
+Charset=UTF-8

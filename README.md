@@ -3,6 +3,8 @@ dots
 
 Config files for linux :)
 
+![Result](/screen.png?raw=true)
+
 Install
 ===
 
