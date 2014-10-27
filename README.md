@@ -1,7 +1,7 @@
 dots
 ====
 
-Config files for linux :)
+Config files for linux/cygwin :)
 
 ![Result](/screen.png?raw=true)
 
