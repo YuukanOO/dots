@@ -65,9 +65,9 @@ man() {
 }
 
 GIT_BRANCH_SYMBOL='〒'
-GIT_BRANCH_CHANGED_SYMBOL='±'
-GIT_NEED_PUSH_SYMBOL='￪'
-GIT_NEED_PULL_SYMBOL='￬'
+GIT_BRANCH_CHANGED_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]±'
+GIT_NEED_PUSH_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]￪'
+GIT_NEED_PULL_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]￬'
 
 __git_branch() {
   [ -z "$(which git)" ] && return    # no git command found
