@@ -13,6 +13,8 @@ set backspace=indent,eol,start
 set hidden
 set number
 set cursorline
+set colorcolumn=80
+set foldmethod=indent
 
 syntax enable
 filetype on
