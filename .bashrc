@@ -110,3 +110,8 @@ ps1() {
 
 # Prompt!
 PROMPT_COMMAND=ps1
+
+export LP_ENABLE_TIME=1
+
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
