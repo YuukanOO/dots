@@ -1,12 +1,11 @@
 BoldAsFont=yes
 Term=xterm-256color
 BoldAsColour=yes
-ForegroundColour=192,197,206
-BackgroundColour=43,48,59
 Font=Inconsolata for Powerline
 FontHeight=12
 Columns=91
-Rows=50
+Rows=51
+# base16 colorscheme
 Black=43,48,59
 BoldBlack=101,115,126
 Red=191,97,106
@@ -23,6 +22,30 @@ Cyan=150,181,180
 BoldCyan=171,121,103
 White=192,197,206
 BoldWhite=239,241,245
+ForegroundColour=192,197,206
+BackgroundColour=43,48,59
+
+# Ambient colorscheme
+#Black=    #222224
+#Red=    #E86F4F
+#Green=    #B9CE42
+#Yellow=   #F07750
+#Blue=   #68AABB
+#Magenta=  #B7418E
+#Cyan=   #8D878D
+#White=    #F4F1F0
+#BoldBlack=  #666668
+#BoldRed=  #D25D3D
+#BoldGreen=  #BDE0101
+#BoldYellow= #F07750
+#BoldBlue= #AACCBB
+#BoldMagenta=  #E18A98
+#BoldCyan= #42719B
+#BoldWhite=  #F4F1F0
+#ForegroundColour= #F4F1F0
+#BackgroundColour= #282830
+#CursorColour=   #F07750
+
 CursorType=block
 Scrollbar=none
 PgUpDnScroll=yes

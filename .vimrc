@@ -38,7 +38,7 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 let g:neocomplcache_enable_at_startup = 1
-"let g:airline_theme='base16'
+let g:airline_theme='base16'
 
 set expandtab
 set shiftwidth=2
