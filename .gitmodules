@@ -25,3 +25,6 @@
 [submodule "liquidprompt"]
 	path = liquidprompt
 	url = git@github.com:nojhan/liquidprompt.git
+[submodule ".vim/bundle/vim-multiple-cursors"]
+	path = .vim/bundle/vim-multiple-cursors
+	url = git@github.com:terryma/vim-multiple-cursors.git
