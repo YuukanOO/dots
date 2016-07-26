@@ -22,8 +22,10 @@ filetype plugin on
 filetype indent on
 execute pathogen#infect()
 set background=dark
-colorscheme base16-ocean
 set t_Co=16
+let base16colorspace=256
+
+colorscheme base16-materia
 
 set laststatus=2
 let g:airline_powerline_fonts = 1

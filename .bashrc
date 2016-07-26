@@ -1,6 +1,10 @@
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-materia.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # Global exports
 export EDITOR=vim
 
@@ -63,55 +67,3 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
-
-GIT_BRANCH_SYMBOL='〒'
-GIT_BRANCH_CHANGED_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]±'
-GIT_NEED_PUSH_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]￪'
-GIT_NEED_PULL_SYMBOL='\[$(tput bold)\]\[$(tput setaf 1)\]￬'
-
-__git_branch() {
-  [ -z "$(which git)" ] && return    # no git command found
-
-  # try to get current branch or or SHA1 hash for detached head
-  local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)"
-  [ -z "$branch" ] && return  # not a git branch
-
-  local marks
-
-  # branch is modified
-  [ -n "$(git status --porcelain)" ] && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
-
-  # check if local branch is ahead/behind of remote and by how many commits
-  # Shamelessly copied from http://stackoverflow.com/questions/2969214/git-programmatically-know-by-how-much-the-branch-is-ahead-behind-a-remote-branc
-  local remote="$(git config branch.$branch.remote)"
-  local remote_ref="$(git config branch.$branch.merge)"
-  local remote_branch="${remote_ref##refs/heads/}"
-  local tracking_branch="refs/remotes/$remote/$remote_branch"
-  if [ -n "$remote" ]; then
-    local pushN="$(git rev-list $tracking_branch..HEAD|wc -l|tr -d ' ')"
-    local pullN="$(git rev-list HEAD..$tracking_branch|wc -l|tr -d ' ')"
-    [ "$pushN" != "0" ] && marks+=" $GIT_NEED_PUSH_SYMBOL$pushN"
-    [ "$pullN" != "0" ] && marks+=" $GIT_NEED_PULL_SYMBOL$pullN"
-  fi
-
-  # print the git branch segment without a trailing newline
-  printf " $GIT_BRANCH_SYMBOL$branch$marks "
-}
-
-ps1() {
-  if [ $? -eq 0 ]; then
-    local STATUS="$(tput setaf 2)"
-  else
-    local STATUS="$(tput setaf 1)"
-  fi
-
-  PS1="\[$(tput setaf 4)\]┌─[\[$STATUS\]\$\[$(tput setaf 4)\]][\[$(tput sgr0)\]\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput sgr0)\]\[$(tput setaf 2)\]\h\[$(tput setaf 4)\]]\[$(tput setaf 6)\]$(__git_branch)\[$(tput sgr0)\]\[$(tput setaf 4)\]: \[$(tput sgr0)\]\[$(tput setaf 7)\]\w\n\[$(tput setaf 4)\]└── \[$(tput sgr0)\]\[$(tput sgr0)\]"
-}
-
-# Prompt!
-PROMPT_COMMAND=ps1
-
-export LP_ENABLE_TIME=1
-
-# Only load Liquid Prompt in interactive shells, not from a script or from scp
-[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
