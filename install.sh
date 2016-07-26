@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Global variables
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -35,11 +37,16 @@ checkCmd awesome
 checkCmd urxvt
 checkCmd vim
 checkCmd ruby
+checkCmd chsh
+checkCmd sudo
+checkCmd g++
 
 if ! [ $PREREQ_OK -eq 1 ];then
 	echo -e "${RED}Some prerequistes are missing, please install them first! Exiting now...${NC}"
 	exit
 fi
+
+echo "You will need rxvt-unicode with --enable-unicode3!\nIf it complains about perl not available, install the package perl-ExtUtils-Embed. You may also need libX11-devel."
 
 # Retrieve submodules
 echo "Retrieving git submodules..."
@@ -52,6 +59,7 @@ sh $DIR/fonts/install.sh
 # ZSH
 echo "Installing Oh my zsh!"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s /bin/zsh
 
 # Terminal stuff
 echo "Installing terminal stuff..."
