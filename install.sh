@@ -85,4 +85,4 @@ cp -R $DIR/.vim $HOME
 # Awesome WM
 echo "Copying awesome environment..."
 mkdir -p $HOME/.config
-cp -R $DIR/.config/awesome $HOME/.config
+cp -R $DIR/.config/* $HOME/.config

@@ -1,9 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/sky/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-materia.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+export XDG_CONFIG_HOME=$HOME/.config
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
