@@ -1,2 +1,16 @@
-URxvt*font: xft:Inconsolata\ for\ Powerline:pixelsize=12
+! Xft settings
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! Urxft general settings
+URxvt*font: xft:Tamsyn:Regular:pixelsize=13
+URxvt*boldFont: xft:Tamsyn:Bold:pixelsize=13
 URxvt*scrollBar: false
+URxvt*borderLess: false
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0

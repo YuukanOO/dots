@@ -38,15 +38,15 @@ checkCmd urxvt
 checkCmd vim
 checkCmd ruby
 checkCmd chsh
-checkCmd sudo
-checkCmd g++
+checkCmd mkfontdir
+checkCmd compton
 
 if ! [ $PREREQ_OK -eq 1 ];then
 	echo -e "${RED}Some prerequistes are missing, please install them first! Exiting now...${NC}"
 	exit
 fi
 
-echo "You will need rxvt-unicode with --enable-unicode3!\nIf it complains about perl not available, install the package perl-ExtUtils-Embed. You may also need libX11-devel."
+#echo "You will need rxvt-unicode with --enable-unicode3!\nIf it complains about perl not available, install the package perl-ExtUtils-Embed. You may also need libX11-devel."
 
 # Retrieve submodules
 echo "Retrieving git submodules..."
@@ -54,6 +54,11 @@ git submodule init
 git submodule update
 
 # Fonts
+curl -LSso $DIR/tmp/tamsyn-font.tar.gz http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
+tar xzf $DIR/tmp/tamsyn-font.tar.gz
+mkdir -p $HOME/.local/share/fonts/tamsyn
+cp $DIR/tmp/tamsyn-font-1.11/* $HOME/.local/share/fonts/tamsyn
+mkfontdir $HOME/.local/share/fonts/tamsyn
 sh $DIR/fonts/install.sh
 
 # ZSH
@@ -76,3 +81,8 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cp $DIR/.vimrc $HOME
 cp -R $DIR/.vim $HOME
+
+# Awesome WM
+echo "Copying awesome environment..."
+mkdir -p $HOME/.config
+cp -R $DIR/.config/awesome $HOME/.config

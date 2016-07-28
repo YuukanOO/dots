@@ -28,7 +28,7 @@ let base16colorspace=256
 colorscheme base16-materia
 
 set laststatus=2
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let mapleader = ","
 
 map <up> <nop>
