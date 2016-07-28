@@ -55,7 +55,7 @@ git submodule update
 
 # Fonts
 curl -LSso $DIR/tmp/tamsyn-font.tar.gz http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
-tar xzf $DIR/tmp/tamsyn-font.tar.gz
+tar xzf $DIR/tmp/tamsyn-font.tar.gz -C $DIR/tmp
 mkdir -p $HOME/.local/share/fonts/tamsyn
 cp $DIR/tmp/tamsyn-font-1.11/* $HOME/.local/share/fonts/tamsyn
 mkfontdir $HOME/.local/share/fonts/tamsyn
