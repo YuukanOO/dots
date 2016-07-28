@@ -40,6 +40,7 @@ checkCmd ruby
 checkCmd chsh
 checkCmd mkfontdir
 checkCmd compton
+checkCmd jumanji
 
 if ! [ $PREREQ_OK -eq 1 ];then
 	echo -e "${RED}Some prerequistes are missing, please install them first! Exiting now...${NC}"
