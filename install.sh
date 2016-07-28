@@ -71,9 +71,9 @@ echo "Installing terminal stuff..."
 cp -R $DIR/base16-shell $HOME/.config
 cp $DIR/.bashrc $HOME
 cp $DIR/.Xresources $HOME
-source $HOME/.bashrc
 xrdb -merge $HOME/.Xresources
-cat $DIR/.zshrc >> $HOME/.zshrc
+cp $DIR/.zshrc $HOME/.zshrc
+source $HOME/.bashrc
 
 # VIM
 echo "Preparing VIM..."

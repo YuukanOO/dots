@@ -43,3 +43,6 @@
 [submodule ".config/awesome/lain"]
 	path = .config/awesome/lain
 	url = git@github.com:copycat-killer/lain
+[submodule ".vim/bundle/vim-css-color"]
+	path = .vim/bundle/vim-css-color
+	url = git@github.com:ap/vim-css-color

@@ -4,25 +4,35 @@
 
 theme = {}
 
+theme.background_color = "#263238"
+theme.foreground_color = "#C9CCD3"
+theme.primary_color = "#8BD649"
+theme.primary_inverse_color = "#2C393F"
+theme.dark_foreground_color = "#707880"
+
 theme.font          = "Tamsyn 10"
 theme.useless_gap_width = 10
 
-theme.bg_normal     = "#222222"
+theme.bg_normal     = theme.background_color
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = theme.foreground_color
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 1
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_normal = theme.background_color
+theme.border_focus  = theme.dark_foreground_color
 theme.border_marked = "#91231c"
 
+theme.taglist_bg_focus = theme.background_color
+theme.taglist_fg_focus = theme.primary_color
+theme.taglist_fg_occupied = "#ffffff"
+theme.taglist_fg_empty = theme.foreground_color
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
