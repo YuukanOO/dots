@@ -3,6 +3,7 @@
 # Global variables
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
 NC='\033[0m'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -21,7 +22,7 @@ function checkCmd {
 	fi
 }
 
-echo "This script will do all required steps do deploy a ready to use environment based on this dots repo. Do you want to run it now? [Y/n]"
+echo "This script will do all required steps do deploy a ready to use environment based on this dots repo. It may override your current dot files so make a backup!! Do you want to run it now? [Y/n]"
 read GOON
 
 if [ ${GOON:-Y}  = "n" ];then
@@ -47,7 +48,7 @@ if ! [ $PREREQ_OK -eq 1 ];then
 	exit
 fi
 
-#echo "You will need rxvt-unicode with --enable-unicode3!\nIf it complains about perl not available, install the package perl-ExtUtils-Embed. You may also need libX11-devel."
+echo -e "${YELLOW}Embedded jumanji config files works best for the git version so you may have to compile it from source.${NC}"
 
 # Retrieve submodules
 echo "Retrieving git submodules..."
@@ -55,11 +56,13 @@ git submodule init
 git submodule update
 
 # Fonts
-curl -LSso $DIR/tmp/tamsyn-font.tar.gz http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
-tar xzf $DIR/tmp/tamsyn-font.tar.gz -C $DIR/tmp
-mkdir -p $HOME/.local/share/fonts/tamsyn
-cp $DIR/tmp/tamsyn-font-1.11/* $HOME/.local/share/fonts/tamsyn
-mkfontdir $HOME/.local/share/fonts/tamsyn
+if [ ! -f $DIR/tmp/tamsyn-font.tar.gz ];then
+  curl -LSso $DIR/tmp/tamsyn-font.tar.gz http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
+  tar xzf $DIR/tmp/tamsyn-font.tar.gz -C $DIR/tmp
+  mkdir -p $HOME/.local/share/fonts/tamsyn
+  cp $DIR/tmp/tamsyn-font-1.11/* $HOME/.local/share/fonts/tamsyn
+  mkfontdir $HOME/.local/share/fonts/tamsyn
+fi
 sh $DIR/fonts/install.sh
 
 # ZSH
