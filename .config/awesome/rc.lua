@@ -91,7 +91,7 @@ end
 -- Create a laucher widget and a main menu
 mymainmenu = awful.menu({ items = {
   { "open terminal", terminal },
-  { "file manager", terminal .. "-e ranger" },
+  { "file manager", terminal .. " -e ranger" },
   { "web", "firefox" },
   { "reboot", "shutdown -r now" },
   { "shutdown", "shutdown now" }
