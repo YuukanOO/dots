@@ -5,6 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-materia.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
+source $HOME/export_colors.sh
+
 export XDG_CONFIG_HOME=$HOME/.config
 
 # Set name of the theme to load.

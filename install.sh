@@ -73,6 +73,7 @@ chsh -s /bin/zsh
 
 # Terminal stuff
 echo "Installing terminal stuff..."
+cp $DIR/export_colors.sh $HOME
 cp -R $DIR/base16-shell $HOME/.config
 cp $DIR/.bashrc $HOME
 cp $DIR/.Xresources $HOME

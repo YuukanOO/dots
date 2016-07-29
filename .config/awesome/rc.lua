@@ -93,6 +93,7 @@ mymainmenu = awful.menu({ items = {
   { "open terminal", terminal },
   { "file manager", terminal .. " -e ranger" },
   { "web", "firefox" },
+  { "log off", awesome.quit },
   { "reboot", "shutdown -r now" },
   { "shutdown", "shutdown now" }
 }})
