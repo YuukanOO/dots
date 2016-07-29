@@ -6,11 +6,13 @@ theme = {}
 
 theme.background_color = "#263238"
 theme.foreground_color = "#C9CCD3"
-theme.primary_color = "#8BD649"
+theme.primary_color = "#ea9560" -- "#8BD649"
 theme.primary_inverse_color = "#2C393F"
 theme.dark_foreground_color = "#707880"
+theme.icon_color = "#ea9560"
 
 theme.font          = "Tamsyn 10"
+theme.icon_font     = "Icons 10"
 theme.useless_gap_width = 10
 
 theme.bg_normal     = theme.background_color

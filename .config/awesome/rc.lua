@@ -12,7 +12,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local lain = require("lain")
 
-local tags_list = { "tty", "web", "dev", "media", "others" }
+local tags_list = { "tty", "web", "dev", "media", "ssh" }
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -43,6 +43,11 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/YuukanOO/theme.lua")
 
+-- Returns an icon for the given glyph as retrieved by gucharmap
+function icon(glyph)
+  return '<span font="' .. theme.icon_font .. '" color="' .. theme.icon_color .. '">' .. glyph .. '</span>'
+end
+
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
@@ -60,7 +65,8 @@ local layouts =
 {
   lain.layout.centerfair,
   lain.layout.termfair,
-  lain.layout.centerwork
+  lain.layout.centerwork,
+  lain.layout.centerhwork
 }
 -- }}}
 
@@ -85,7 +91,8 @@ end
 -- Create a laucher widget and a main menu
 mymainmenu = awful.menu({ items = {
   { "open terminal", terminal },
-  { "web", "jumanji" },
+  { "file manager", terminal .. "-e ranger" },
+  { "web", "firefox" },
   { "reboot", "shutdown -r now" },
   { "shutdown", "shutdown now" }
 }})
@@ -99,12 +106,14 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock(icon('ķ') .. '%H:%M')
+
+volume_textbox = wibox.widget.textbox()
+volume_textbox:set_markup(icon('Ʀ') .. 'Hello there!')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
-mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
@@ -151,17 +160,16 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+local status_margin = 10
+
+function margin(widget)
+  return wibox.layout.margin(widget, status_margin, status_margin)
+end
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    mylayoutbox[s] = awful.widget.layoutbox(s)
-    mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
@@ -180,8 +188,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
+    right_layout:add(margin(volume_textbox))
+    right_layout:add(margin(mytextclock))
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
@@ -355,8 +363,8 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
 }
 -- }}}
 

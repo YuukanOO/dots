@@ -41,7 +41,7 @@ checkCmd ruby
 checkCmd chsh
 checkCmd mkfontdir
 checkCmd compton
-checkCmd jumanji
+#checkCmd min
 
 if ! [ $PREREQ_OK -eq 1 ];then
 	echo -e "${RED}Some prerequistes are missing, please install them first! Exiting now...${NC}"
@@ -63,6 +63,7 @@ if [ ! -f $DIR/tmp/tamsyn-font.tar.gz ];then
   cp $DIR/tmp/tamsyn-font-1.11/* $HOME/.local/share/fonts/tamsyn
   mkfontdir $HOME/.local/share/fonts/tamsyn
 fi
+curl -LSso $HOME/.local/share/fonts/Icons.bdf https://raw.githubusercontent.com/copycat-killer/dots/master/.fonts/Icons.bdf
 sh $DIR/fonts/install.sh
 
 # ZSH
