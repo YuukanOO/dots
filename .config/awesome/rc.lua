@@ -109,9 +109,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock(icon('ķ') .. '%H:%M')
 
-volume_textbox = wibox.widget.textbox()
-volume_textbox:set_markup(icon('Ʀ') .. 'Hello there!')
-
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -124,48 +121,27 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
                     awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
                     )
-mytasklist = {}
-mytasklist.buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  -- Without this, the following
-                                                  -- :isvisible() makes no sense
-                                                  c.minimized = false
-                                                  if not c:isvisible() then
-                                                      awful.tag.viewonly(c:tags()[1])
-                                                  end
-                                                  -- This will also un-minimize
-                                                  -- the client, if needed
-                                                  client.focus = c
-                                                  c:raise()
-                                              end
-                                          end),
-                     awful.button({ }, 3, function ()
-                                              if instance then
-                                                  instance:hide()
-                                                  instance = nil
-                                              else
-                                                  instance = awful.menu.clients({
-                                                      theme = { width = 250 }
-                                                  })
-                                              end
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
-                                          end))
 
 local status_margin = 10
 
 function margin(widget)
   return wibox.layout.margin(widget, status_margin, status_margin)
 end
+
+-- {{{ Widgets definition
+volumewidget = lain.widgets.alsa({
+  settings = function()
+    widget:set_markup(icon('ŭ') .. volume_now.level .. '%')
+  end
+})
+
+batwidget = lain.widgets.bat({
+  notify = 'off',
+  settings = function()
+    widget:set_markup(icon('Ű') .. bat_now.perc .. '%')
+  end
+})
+-- }}}
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -174,22 +150,20 @@ for s = 1, screen.count() do
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
-    -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
-
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
+    --left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(margin(volume_textbox))
+    right_layout:add(margin(volumewidget))
+    right_layout:add(margin(batwidget))
     right_layout:add(margin(mytextclock))
 
     -- Now bring it all together (with the tasklist in the middle)

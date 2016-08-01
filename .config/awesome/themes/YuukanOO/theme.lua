@@ -31,8 +31,8 @@ theme.border_normal = theme.background_color
 theme.border_focus  = theme.dark_foreground_color
 theme.border_marked = "#91231c"
 
-theme.taglist_bg_focus = theme.background_color
-theme.taglist_fg_focus = theme.primary_color
+theme.taglist_bg_focus = theme.primary_color
+theme.taglist_fg_focus = theme.primary_inverse_color
 theme.taglist_fg_occupied = "#ffffff"
 theme.taglist_fg_empty = theme.foreground_color
 -- There are other variable sets
