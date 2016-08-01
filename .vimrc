@@ -16,6 +16,8 @@ set cursorline
 set colorcolumn=80
 set foldmethod=indent
 
+let g:pathogen_disabled=["vim-css-color"]
+
 syntax enable
 filetype on
 filetype plugin on

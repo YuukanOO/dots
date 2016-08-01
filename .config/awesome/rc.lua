@@ -107,7 +107,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock(icon('ķ') .. '%H:%M')
+mytextclock = awful.widget.textclock(icon('ķ') .. '%H:%M <span color="' .. theme.dark_foreground_color .. '">%d %b. %Y </span>')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -134,6 +134,7 @@ volumewidget = lain.widgets.alsa({
     widget:set_markup(icon('ŭ') .. volume_now.level .. '%')
   end
 })
+volumewidget:buttons(awful.util.table.join(awful.button({ }, 1, function() awful.util.spawn(terminal .. " -e alsamixer") end)))
 
 batwidget = lain.widgets.bat({
   notify = 'off',
@@ -157,7 +158,7 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     --left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
+    left_layout:add(margin(mypromptbox[s]))
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
