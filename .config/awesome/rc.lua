@@ -11,6 +11,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local lain = require("lain")
+local vicious = require("vicious")
+local io = { popen = io.popen }
 
 local tags_list = { "tty", "web", "dev", "media", "ssh" }
 
@@ -46,6 +48,10 @@ beautiful.init("~/.config/awesome/themes/YuukanOO/theme.lua")
 -- Returns an icon for the given glyph as retrieved by gucharmap
 function icon(glyph)
   return '<span font="' .. theme.icon_font .. '" color="' .. theme.icon_color .. '">' .. glyph .. '</span>'
+end
+
+function iconWithColor(glyph, color)
+  return '<span font="' .. theme.icon_font .. '" color="' .. color .. '">' .. glyph .. '</span>'
 end
 
 -- This is used later as the default terminal and editor to run.
@@ -131,7 +137,15 @@ end
 -- {{{ Widgets definition
 volumewidget = lain.widgets.alsa({
   settings = function()
-    widget:set_markup(icon('ŭ') .. volume_now.level .. '%')
+    local glyph = 'ŭ'
+    local color = theme.ok_color
+
+    if volume_now.status == 'off' or volume_now.level == '0' then
+      color = theme.ko_color
+      glyph = 'ū'
+    end
+
+    widget:set_markup(iconWithColor(glyph, color) .. volume_now.level .. '%')
   end
 })
 volumewidget:buttons(awful.util.table.join(awful.button({ }, 1, function() awful.util.spawn(terminal .. " -e alsamixer") end)))
@@ -139,9 +153,43 @@ volumewidget:buttons(awful.util.table.join(awful.button({ }, 1, function() awful
 batwidget = lain.widgets.bat({
   notify = 'off',
   settings = function()
-    widget:set_markup(icon('Ű') .. bat_now.perc .. '%')
+    local color = theme.ok_color
+    local glyph = 'Ű' -- full
+
+    if bat_now.ac_status == '0' then
+      if bat_now.perc < 25 then
+        color = theme.ko_color
+        glyph = 'Ů'
+      elseif bat_now.perc < 50 then
+        glyph = 'ů'
+      end
+    end
+
+    widget:set_markup(iconWithColor(glyph, color) .. bat_now.perc .. '%')
   end
 })
+
+nmwidget = wibox.widget.textbox()
+vicious.register(nmwidget, function()
+  local f = io.popen("LC_ALL=en_US.UTF8 nmcli n")
+  -- LC_ALL=en_US nmcli -t -f name,device c show --active
+  local info = f:lines()()
+
+  f:close()
+
+
+  return { info }
+end, function(widget, args)
+  local info = args[1]
+  local color = theme.ok_color
+  local glyph = 'ĵ'
+
+  if info ~= 'enabled' then
+    color = theme.ko_color
+  end
+
+  return iconWithColor(glyph, color) .. args[1]
+end, 5)
 -- }}}
 
 for s = 1, screen.count() do
@@ -163,6 +211,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(margin(nmwidget))
     right_layout:add(margin(volumewidget))
     right_layout:add(margin(batwidget))
     right_layout:add(margin(mytextclock))
@@ -417,4 +466,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn_with_shell("compton -bc")
+awful.util.spawn_with_shell("compton -bco 0.5")

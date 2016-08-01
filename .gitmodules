@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/vim-css-color"]
 	path = .vim/bundle/vim-css-color
 	url = git@github.com:ap/vim-css-color
+[submodule ".config/awesome/vicious"]
+	path = .config/awesome/vicious
+	url = http://git.sysphere.org/vicious
