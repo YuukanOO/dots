@@ -4,15 +4,14 @@
 
 theme = {}
 
-theme.background_color = "#263238"
-theme.foreground_color = "#C9CCD3"
-theme.primary_color = "#ea9560" -- "#8BD649"
-theme.primary_inverse_color = "#2C393F"
-theme.dark_foreground_color = "#707880"
---theme.icon_color = "#ea9560"
+theme.background_color = os.getenv('BASE_00')
+theme.foreground_color = os.getenv('BASE_04')
+theme.primary_color = os.getenv('BASE_09')
+theme.primary_inverse_color = os.getenv('BASE_01')
+theme.dark_foreground_color = os.getenv('BASE_03')
 theme.icon_color = theme.dark_foreground_color
-theme.ok_color = "#8bd649"
-theme.ko_color = "#ea9560"
+theme.ok_color = os.getenv('BASE_0B')
+theme.ko_color = os.getenv('BASE_09')
 
 theme.font          = "Tamsyn 10"
 theme.icon_font     = "Icons 10"
@@ -20,19 +19,19 @@ theme.useless_gap_width = 10
 
 theme.bg_normal     = theme.background_color
 theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
+theme.bg_urgent     = theme.bg_normal
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = theme.foreground_color
 theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
+theme.fg_urgent     = theme.primary_color
 theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 1
 theme.border_normal = theme.background_color
 theme.border_focus  = theme.dark_foreground_color
-theme.border_marked = "#91231c"
+theme.border_marked = theme.ko_color
 
 theme.taglist_bg_focus = theme.primary_color
 theme.taglist_fg_focus = theme.primary_inverse_color

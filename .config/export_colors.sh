@@ -1,8 +1,8 @@
 export BASE_00="#263238" # Base 00 - Black
 export BASE_08="#EC5F67" # Base 08 - Red
-export BASE_OB="#8BD649" # Base 0B - Green
+export BASE_0B="#8BD649" # Base 0B - Green
 export BASE_0A="#FFCC00" # Base 0A - Yellow
-export BASE_OD="#89DDFF" # Base 0D - Blue
+export BASE_0D="#89DDFF" # Base 0D - Blue
 export BASE_0E="#82AAFF" # Base 0E - Magenta
 export BASE_0C="#80CBC4" # Base 0C - Cyan
 export BASE_05="#CDD3DE" # Base 05 - White
