@@ -77,14 +77,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 chsh -s /bin/zsh
 
 # Terminal stuff
+mkdir -p $HOME/.config
 echo "Installing terminal stuff..."
-cp $DIR/export_colors.sh $HOME
+cp -R $DIR/.irssi $HOME/.irssi
 cp -R $DIR/base16-shell $HOME/.config
 cp $DIR/.bashrc $HOME
 cp $DIR/.Xresources $HOME
-xrdb -merge $HOME/.Xresources
+cp $DIR/.xsession $HOME
+cp $DIR/.profile $HOME
 cp $DIR/.zshrc $HOME/.zshrc
-source $HOME/.bashrc
 
 # VIM
 echo "Preparing VIM..."
@@ -95,5 +96,8 @@ cp -R $DIR/.vim $HOME
 
 # Awesome WM
 echo "Copying awesome environment..."
-mkdir -p $HOME/.config
 cp -R $DIR/.config/* $HOME/.config
+
+xrdb -merge $HOME/.Xresources
+source $HOME/.bashrc
+source $HOME/.profile
