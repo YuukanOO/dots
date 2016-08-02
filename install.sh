@@ -41,11 +41,12 @@ checkCmd ruby
 checkCmd chsh
 checkCmd mkfontdir
 checkCmd compton
-#checkCmd min
+checkCmd firefox
 checkCmd sed
 checkCmd wc
 checkCmd dnf
 checkCmd nmcli
+checkCmd feh
 
 if ! [ $PREREQ_OK -eq 1 ];then
 	echo -e "${RED}Some prerequistes are missing, please install them first! Exiting now...${NC}"

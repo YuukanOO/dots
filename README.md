@@ -1,7 +1,7 @@
 dots
 ====
 
-Config files for linux/cygwin :)
+Config files for my linux setup.
 
 ![Result](/screen.png?raw=true)
 
@@ -9,4 +9,6 @@ Install
 ===
 
 - `git clone` this repo
-- `git submodule init` & `git submodule update`
+- `sh install.sh`
+
+The install script will check for dependencies. On fedora, you can use the `install.fedora.sh` to install dependencies.
