@@ -171,12 +171,10 @@ batwidget = lain.widgets.bat({
 
 nmwidget = wibox.widget.textbox()
 vicious.register(nmwidget, function()
-  local f = io.popen("LC_ALL=en_US.UTF8 nmcli n")
-  -- LC_ALL=en_US nmcli -t -f name,device c show --active
+  local f = io.popen("LC_ALL=en_US nmcli -t -f name,device c show --active | sed -n 's/\\(.*\\):.*/\\1/p'")
   local info = f:lines()()
 
   f:close()
-
 
   return { info }
 end, function(widget, args)
@@ -184,11 +182,12 @@ end, function(widget, args)
   local color = theme.ok_color
   local glyph = 'ĵ'
 
-  if info ~= 'enabled' then
+  if info == nil then
     color = theme.ko_color
+    info = 'N/A'
   end
 
-  return iconWithColor(glyph, color) .. args[1]
+  return iconWithColor(glyph, color) .. info
 end, 5)
 -- }}}
 
