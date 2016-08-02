@@ -98,7 +98,7 @@ end
 mymainmenu = awful.menu({ items = {
   { "open terminal", terminal },
   { "file manager", terminal .. " -e ranger" },
-  { "web", "firefox" },
+  { "web", "jumanji" },
   { "log off", awesome.quit },
   { "reboot", "shutdown -r now" },
   { "shutdown", "shutdown now" }
@@ -156,7 +156,7 @@ batwidget = lain.widgets.bat({
     local color = theme.ok_color
     local glyph = 'Ű' -- full
 
-    if bat_now.ac_status == '0' then
+    if bat_now.ac_status == 0 then
       if bat_now.perc < 25 then
         color = theme.ko_color
         glyph = 'Ů'
@@ -412,6 +412,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "jumanji" },
       properties = { tag = tags[1][2] } },
 }
 -- }}}

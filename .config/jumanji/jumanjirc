@@ -1,13 +1,13 @@
 set homepage http://www.google.com
 searchengine g http://www.google.com/search?q=%s
 set font Tamsyn
-set statusbar-fg                "#C9CCD3"
+set statusbar-fg                "#707880"
 set statusbar-bg                "#263238"
 set inputbar-bg                 "#263238"
-set inputbar-fg                 "#8BD649"
+set inputbar-fg                 "#C9CCD3"
 set tabbar-fg                   "#DBDAC1"
 set tabbar-bg                   "#263238"
-set tabbar-focus-fg             "#8BD649"
+set tabbar-focus-fg             "#EA9560"
 set tabbar-focus-bg             "#263238"
 #set default-bg                  "#263238"
 #set default-fg                  "#C9CCD3"
