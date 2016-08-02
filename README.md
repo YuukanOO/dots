@@ -3,7 +3,8 @@ dots
 
 Config files for my linux setup.
 
-![Result](/screen.png?raw=true)
+![Empty](/screen_empty.png?raw=true)
+![Busy](/screen_busy.png?raw=true)
 
 Install
 ===
