@@ -14,7 +14,7 @@ local lain = require("lain")
 local vicious = require("vicious")
 local io = { popen = io.popen }
 
-local tags_list = { "tty", "web", "dev", "media", "ssh" }
+local tags_list = { "cli", "web", "dev", "media", "ssh", "prOn" }
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -189,6 +189,29 @@ end, function(widget, args)
 
   return iconWithColor(glyph, color) .. info
 end, 5)
+
+pkgwidget = wibox.widget.textbox()
+vicious.register(pkgwidget, function()
+  local f = io.popen("dnf check-update -q | sed '/^\\s*$/d' | wc -l")
+  local info = f:lines()()
+
+  f:close()
+
+  return { info }
+end, function(widget, args)
+  local color = theme.ok_color
+  local info = args[1]
+  local txt = 'updates'
+
+  if info ~= '0' then
+    color = theme.ko_color
+    if info == '1' then
+      txt = 'update'
+    end
+  end
+
+  return iconWithColor('Ʀ', color) .. info .. ' ' .. txt
+end, 60)
 -- }}}
 
 for s = 1, screen.count() do
@@ -210,6 +233,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(margin(pkgwidget))
     right_layout:add(margin(nmwidget))
     right_layout:add(margin(volumewidget))
     right_layout:add(margin(batwidget))

@@ -24,7 +24,7 @@ filetype plugin on
 filetype indent on
 execute pathogen#infect()
 set background=dark
-set t_Co=16
+set t_Co=256
 let base16colorspace=256
 
 colorscheme base16-materia
