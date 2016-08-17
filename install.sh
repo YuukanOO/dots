@@ -93,6 +93,8 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cp $DIR/.vimrc $HOME
 cp -R $DIR/.vim $HOME
+mkdir $HOME/.vim/colors
+cp $DIR/base16-vim/colors/* $HOME/.vim/colors
 
 # Awesome WM
 echo "Copying awesome environment..."
