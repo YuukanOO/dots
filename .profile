@@ -1,1 +1,1 @@
-source ~/.config/export_colors.sh
+source ~/.config/export_base16_colors.sh
