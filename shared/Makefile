@@ -8,3 +8,4 @@ install_pathogen:
 
 install_vim:
 	cp ./.vimrc ~
+	cp -r ./.vim/bundle ~/.vim/

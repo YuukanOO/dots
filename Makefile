@@ -1,6 +1,10 @@
-.PHONY: drwhite shared
+.PHONY: git_init drwhite shared
 
-shared:
+git_init:
+	git submodule init
+	git submodule update
+
+shared: git_init
 	@echo "Installing shared components..."
 	$(MAKE) -C shared
 	@echo "Done!"

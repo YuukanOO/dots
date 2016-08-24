@@ -1,0 +1,24 @@
+[submodule "shared/.vim/bundle/LustyExplorer"]
+	path = shared/.vim/bundle/LustyExplorer
+	url = https://github.com/vim-scripts/LustyExplorer.git
+[submodule "shared/.vim/bundle/ctrlp"]
+	path = shared/.vim/bundle/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "shared/.vim/bundle/neocomplete"]
+	path = shared/.vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "shared/.vim/bundle/syntastic"]
+	path = shared/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "shared/.vim/bundle/vim-airline"]
+	path = shared/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "shared/.vim/bundle/vim-compiler-go"]
+	path = shared/.vim/bundle/vim-compiler-go
+	url = https://github.com/rjohnsondev/vim-compiler-go.git
+[submodule "shared/.vim/bundle/vim-go"]
+	path = shared/.vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "shared/.vim/bundle/vim-multiple-cursors"]
+	path = shared/.vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
