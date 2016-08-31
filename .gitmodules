@@ -22,3 +22,15 @@
 [submodule "shared/.vim/bundle/vim-multiple-cursors"]
 	path = shared/.vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "shared/.config/base16-shell"]
+	path = shared/.config/base16-shell
+	url = https://github.com/chriskempson/base16-shell
+[submodule "shared/pkg_src/bar"]
+	path = shared/pkg_src/bar
+	url = https://github.com/osense/bar
+[submodule "shared/pkg_src/lemonbuddy"]
+	path = shared/pkg_src/lemonbuddy
+	url = https://github.com/jaagr/lemonbuddy
+[submodule "shared/pkg_src/i3"]
+	path = shared/pkg_src/i3
+	url = https://github.com/Airblader/i3

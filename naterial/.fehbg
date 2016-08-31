@@ -1,0 +1,2 @@
+#!/bin/sh
+feh  --bg-fill '/home/sky/Dev/dots/naterial/bg_1.jpg' 

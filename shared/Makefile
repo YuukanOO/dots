@@ -1,6 +1,6 @@
-.PHONY: install_vim install_pathogen install_fonts
+.PHONY: install_vim install_pathogen install_fonts install_configs
 
-default: install_pathogen install_vim install_fonts
+default: install_pathogen install_vim install_fonts install_configs
 
 install_pathogen:
 	mkdir -p ~/.vim/autoload ~/.vim/bundle
@@ -13,3 +13,8 @@ install_vim:
 install_fonts:
 	sudo cp -r ./fonts/* /usr/share/fonts/
 	fc-cache -vf
+
+install_configs:
+	cp -r ./.config/* ~/.config
+	cp ./.bashrc ~
+	cp ./.zshrc ~

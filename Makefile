@@ -1,4 +1,4 @@
-.PHONY: git_init drwhite shared
+.PHONY: git_init naterial shared
 
 git_init:
 	git submodule init
@@ -9,7 +9,7 @@ shared: git_init
 	$(MAKE) -C shared
 	@echo "Done!"
 
-drwhite: shared
-	@echo "Installing drwhite theme..."
-	$(MAKE) -C drwhite
+naterial: shared
+	@echo "Installing naterial theme..."
+	$(MAKE) -C naterial
 	@echo "Done!"
